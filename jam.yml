@@ -1,0 +1,30 @@
+---
+# This playbook is intend to install required infrastructure on non docker container systems.
+# Please use a correspondic inventory for executing.
+#- hosts: localhost
+
+#  tasks:
+#    - name: update required roles
+#      command: ansible-galaxy install -r requirements.yml --ignore-errors
+      
+- hosts: java    
+  roles:
+    - role: java
+      become: true
+      tags:
+        - java      
+
+
+- hosts: db
+  roles:
+    - role: mysql
+      become: true
+      tags:
+        - db
+      
+- hosts: apache
+  roles:
+    - role: apache
+      become: true
+      tags:
+        - web      

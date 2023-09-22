@@ -1,0 +1,27 @@
+---
+# This playbook is intend to install data (db, libs and catalogs) on a tailoringexpert platform.
+# Please use a correspondic inventory for executing.
+
+#- hosts: localhost
+#  tasks:
+#    - name: update required roles
+#      command: ansible-galaxy install -r requirements.yml --ignore-errors
+
+- hosts: db
+  roles:
+    - role: tailoringexpert-tenant-db 
+      tags:
+        - db
+                   
+- hosts: web
+  roles:
+    - role: tailoringexpert-tenant-web
+      tags:
+        - web      
+ 
+- hosts: app
+  roles:
+    - role: tailoringexpert-tenant-app
+      tags:
+        - app  
+    

@@ -1,0 +1,39 @@
+---
+# platform data
+- src: git+https://github.com/tailoringexpert/ansible-tenant-db.git
+  name: tailoringexpert-tenant-db
+  version: main
+- src: git+https://github.com/tailoringexpert/ansible-tenant-app.git
+  name: tailoringexpert-tenant-app
+  version: main 
+- src: git+https://github.com/tailoringexpert/ansible-tenant-web.git
+  name: tailoringexpert-tenant-web
+  version: main
+- src: git+https://github.com/tailoringexpert/ansible-catalog-app.git
+  name: tailoringexpert-catalog-app
+  version: main 
+- src: git+https://github.com/tailoringexpert/ansible-catalog-web.git
+  name: tailoringexpert-catalog-web
+  version: main 
+  
+# platform install  
+- src: git+https://github.com/tailoringexpert/ansible-platform-db.git
+  name: tailoringexpert-platform-db
+  version: main
+- src: git+https://github.com/tailoringexpert/ansible-platform-web.git
+  name: tailoringexpert-platform-web
+  version: main
+- src: git+https://github.com/tailoringexpert/ansible-platform-app.git
+  name: tailoringexpert-platform-app
+  version: main 
+
+# external
+- src:  geerlingguy.apache
+  name: apache  
+- src:  geerlingguy.mysql
+  name: mysql
+- src:  geerlingguy.java
+  name: java  
+- src: geerlingguy.docker
+  name: docker  
+
