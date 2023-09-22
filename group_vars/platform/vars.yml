@@ -1,0 +1,51 @@
+---
+home: /app
+
+app_version: 0.1.0
+app_snapshot: ""
+#app_snapshot: "-SNAPSHOT"
+app_port: 8080
+app_protocol: http
+app_template: "{{ app_home }}/resources/templates"
+
+#db
+db_root_name: root
+db_root_password: "{{ vault_db_root_password }}"
+
+db_tailoringexpert_password: "{{ vault_db_tailoringexpert_password }}"
+datasource_tailoringexpert_password: "{{ vault_datasource_tailoringexpert_password }}"
+
+#web
+web_version: 0.1.0
+web_snapshot: ""
+#web_snapshot: "-SNAPSHOT"
+web_tenant_id: demo
+
+platform:
+  name: tailoringexpert
+  # db
+  database:
+    name: tailoringexpert
+    password: "{{ db_tailoringexpert_password }}"
+    url: jdbc:mariadb://{{ db_host_url }}/tailoringexpert
+    priv: tailoringexpert.*:ALL
+    #host: "172.20.0.0/255.255.255.0"
+    host: "{{ db_host_access }}"
+    changelog: 
+      name: db-tailoringexpert/db.changelog-root.xml 
+      src: "{{ app_version }}/tailoringexpert-db-{{ app_version }}{{ app_snapshot }}-liquibase.zip"
+      dest: "{{ db_changelog_home }}/"  
+      clear_checksums: false      
+  # app
+  datasource:
+    driver: org.mariadb.jdbc.Driver
+    dialect: org.hibernate.dialect.MariaDBDialect
+    url: jdbc:mariadb://{{ db_host_url }}/tailoringexpert
+    username: tailoringexpert
+    password: "{{datasource_tailoringexpert_password}}" 
+
+# role mysql
+mysql_root_password_update: yes
+mysql_root_username: root
+mysql_root_password: "{{ vault_db_root_password }}"
+

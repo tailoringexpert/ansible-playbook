@@ -1,0 +1,10 @@
+---
+#mysql_user_name: admin
+#mysql_user_password: "{{ vault_db_admin_password }}"
+mysql_root_password: "{{ vault_db_root_password }}"
+
+mysql_packages:
+  - mariadb-common
+  - mariadb-server
+  
+overwrite_global_mycnf: false

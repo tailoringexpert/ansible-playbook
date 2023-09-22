@@ -1,0 +1,40 @@
+---
+home: "{{ user }}/platform"
+user: tailoringexpert
+group: tailoringexpert
+
+#
+app_home: "{{ home }}/{{ app_version }}/app"
+app_log: "{{ home }}/logs/app"
+app_password: "{{ vault_app_password }}"
+app_ssl_password: "{{ vault_app_ssl_password }}"
+
+web_home: "{{ home }}/{{ app_version }}/web"
+web_documentRoot: "{{ web_home }}/www"
+web_static: "{{ web_documentRoot }}/static"
+web_asset: "{{ web_documentRoot }}/assets"
+web_ssl: "{{ home }}/certs"
+web_log: "{{ home }}/logs/www"
+
+# needed because of global configuration
+db_home: "{{ home }}/db"
+db_changelog_home: "{{ db_home }}/changelogs"
+
+db_host_url: localhost:3306
+db_host_access: localhost
+
+
+catalog_web_home: "{{ web_documentRoot }}"
+catalog_app_home: "{{ app_home }}/resources"
+#db
+#db_root_name: root
+#db_root_password: "{{ vault_db_root_password }}"
+
+db_tailoringexpert_password: "{{ vault_db_tailoringexpert_password }}"
+datasource_tailoringexpert_password: "{{ vault_datasource_tailoringexpert_password }}"
+
+# role mysql
+mysql_root_password_update: yes
+mysql_root_username: root
+mysql_root_password: "{{ vault_db_root_password }}"
+

@@ -1,0 +1,48 @@
+---
+app_version: 0.1.0
+app_snapshot: ""
+#app_snapshot: "-SNAPSHOT"
+
+db_demo_password: "{{ vault_db_demo_password }}"
+datasource_demo_password: "{{ vault_datasource_demo_password }}"
+
+#web
+web_tenant_id: demo
+
+tenants:
+  - name: demo
+    # db
+    database:
+      name: tailoringexpert_demo
+      password: "{{ db_demo_password }}"
+      url: jdbc:mariadb://{{ db_host_url }}/tailoringexpert_demo
+      priv: tailoringexpert_demo.*:ALL
+      host: "{{ db_host_access }}"
+      changelog: 
+        name: db-tailoringexpert-demo/db.changelog-root.xml   
+        src: "{{ app_version }}/demo/tailoringexpert-demo-db-{{ app_version }}{{ app_snapshot }}-liquibase.zip"
+        dest: "{{ db_changelog_home }}/"  
+        clear_checksums: false
+    # web
+    assets:
+      - src: "{{ app_version }}/demo/tailoringexpert-demo-www-{{ app_version }}{{app_snapshot}}-static.zip"
+    alias: []
+    # app
+    datasource:
+      driver: org.mariadb.jdbc.Driver
+      dialect: org.hibernate.dialect.MariaDBDialect
+      url: jdbc:mariadb://{{ db_host_url }}/tailoringexpert_demo
+      username: tailoringexpert_demo
+      password: "{{ datasource_demo_password }}"	        
+    file:
+      src: "{{ app_version }}/demo/tailoringexpert-demo-distribution-{{ app_version }}{{ app_snapshot }}-lib.zip"
+    # catalog
+    catalog: 
+      - version: 8.2.1
+        catalog:
+          src: "catalog/demo/8.2.1/catalog.json"
+        templates:
+          src: "{{ app_version }}/demo/tailoringexpert-demo-catalog-{{ app_version }}{{ app_snapshot }}-templates.zip"
+        assets:
+          src: "{{ app_version }}/demo/tailoringexpert-demo-catalog-{{ app_version }}{{app_snapshot}}-assets.zip"
+   

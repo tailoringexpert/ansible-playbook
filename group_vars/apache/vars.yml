@@ -1,0 +1,10 @@
+---
+apache_vhosts: []
+apache_mods_enabled:
+  - headers
+  - rewrite
+  - ssl
+  - proxy
+  - proxy_http
+  - ldap
+  - authnz_ldap

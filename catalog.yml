@@ -1,0 +1,20 @@
+---
+# This playbook is intend to install catalog to tailoringexpert platform.
+# Please use a correspondic inventory for executing.
+
+#- hosts: localhost
+#  tasks:
+#    - name: update required roles
+#      command: ansible-galaxy install -r requirements.yml --ignore-errors
+- hosts: web
+  roles:
+    - role: tailoringexpert-catalog-web
+      tags:
+        - web
+
+- hosts: app
+  roles:
+    - role: tailoringexpert-catalog-app
+      tags:
+        - app      
+ 

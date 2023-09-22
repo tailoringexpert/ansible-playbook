@@ -1,0 +1,24 @@
+---
+ansible_connection: docker 
+ansible_docker_extra_args: "-H=tcp://localhost:2375"
+ansible_user: root
+sudo_user: "{{ ansible_user }}"
+
+home: /app
+
+# needed because of global configuration
+db_home: "{{ home }}"
+db_changelog_home: "{{ db_home }}/changelogs"
+
+#db
+db_root_name: root
+db_root_password: "{{ vault_db_root_password }}"
+
+db_tailoringexpert_password: "{{ vault_db_tailoringexpert_password }}"
+datasource_tailoringexpert_password: "{{ vault_datasource_tailoringexpert_password }}"
+
+# role mysql
+mysql_root_password_update: yes
+mysql_root_username: root
+mysql_root_password: "{{ vault_db_root_password }}"
+
