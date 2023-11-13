@@ -1,0 +1,11 @@
+---
+server_name: tailoringexpert-app
+
+user: tailoringexpert
+group: tailoringexpert
+
+app_port: 8089
+app_protocol: http
+
+# platform and tenant data configuration for jdbc url
+db_host_url: tailoringexpert-db:3306

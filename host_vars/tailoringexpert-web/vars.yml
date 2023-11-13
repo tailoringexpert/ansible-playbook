@@ -1,0 +1,15 @@
+---
+ansible_host: tailoringexpert-web
+
+user: root
+group: root
+
+home: /app
+
+
+#web_home: /app
+#web_documentRoot: /app
+#web_static: "/app/static"
+#web_asset: "/app/assets"
+
+#catalog_home: "{{ web_documentRoot }}"

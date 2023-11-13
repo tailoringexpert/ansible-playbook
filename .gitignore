@@ -2,7 +2,7 @@
 templates/*
 !templates/**/README.md
 
-host_vars/**
+host_vars/*
 !host_vars/tailoringexpert-app
 !host_vars/tailoringexpert-db
 !host_vars/tailoringexpert-web

@@ -1,0 +1,22 @@
+---
+ansible_host: tailoringexpert-demo
+sudo_user: tailoringexpert
+
+home: "/home/{{ user }}/platform"  
+  
+web_servername: tailoringexpert-demo.vm
+web_home: "{{ home }}/{{ app_version }}/web"
+web_current: "{{ home }}/web"
+web_tenant_id: demo
+
+app_current: "{{ home }}/app"
+app_ssl_enabled: false
+
+# role mysql
+mysql_user_home: /home/ansible
+
+
+
+ 
+app_version: 0.0.7
+app_snapshot: "-SNAPSHOT"

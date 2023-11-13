@@ -1,0 +1,7 @@
+---
+ansible_host: tailoringexpert-db
+
+user: root
+group: root
+
+db_host_access: "%"
